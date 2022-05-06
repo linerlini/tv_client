@@ -14,10 +14,19 @@
     "types": [
       "webpack-env"
     ],
+    "noImplicitThis": false,
     "paths": {
       "@/*": [
         "src/*"
-      ]
+      ],
+      "components/*": ["src/components/*"],
+      "server/*": ["src/server/*"],
+      "views/*": ["src/views/*"],
+      "router/*": ["src/router/*"],
+      "store/*": ["src/store/*"],
+      "utils/*": ["src/utils/*"],
+      "types/*": ["src/types/*"],
+      "style/*": ["src/style/*"]
     },
     "lib": [
       "esnext",

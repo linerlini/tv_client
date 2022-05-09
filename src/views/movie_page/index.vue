@@ -36,6 +36,7 @@ import VideoFlow from 'components/video_flow/index.vue'
 const movieStore = useMovieStore()
 
 const isLoadingData = ref(true)
+// 是不是没得数据的
 const isEmpty = computed(() => {
   const type = movieStore.movieType
   if (type) {
@@ -44,6 +45,7 @@ const isEmpty = computed(() => {
     return !movieData.value
   }
 })
+// 就是电影页面那个很大的海报图片地址
 const topImgUrl = computed(() => {
   const type = movieStore.movieType
   if (!type) {
@@ -53,8 +55,11 @@ const topImgUrl = computed(() => {
     return movies ? movies[0].imgUrl || '' : ''
   }
 })
+// 电影数据
 const movieData = ref<Record<string, MovieInfo[]>>()
+// 不同分类下的电影
 const differentTypeMovies = ref<Record<string, MovieInfo[]>>({})
+// 初始化电影数据
 async function initData () {
   const result = await getAllMovie()
   if (result == null) {
@@ -68,11 +73,12 @@ async function initData () {
     }
   }
 }
+// 在页面渲染完后 去初始化数据，同时把加载状态取消了
 onMounted(async () => {
   await initData()
   isLoadingData.value = false
 })
-// todo 类型
+// 监听电影类型的变化，如果选的和现在的电影类型不一样，就把选的电影类型的数据拿出来
 movieStore.$subscribe(async (mutation: any, state: any) => {
   const changeKey = mutation.events.key
   if (changeKey === 'movieType') {

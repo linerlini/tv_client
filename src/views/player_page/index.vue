@@ -13,13 +13,16 @@ import { ElMessage } from 'element-plus'
 
 const store = useMovieStore()
 const url = ref<string>('')
+// 监听要播放的视频，要是变化了就做些处理
 watch(() => store.currentPlayingMovie, async (video) => {
   if (!video) {
     return
   }
   try {
+    // 拿到要播的视频地址
     const result = await getVideoUrl(video.uuid, video.videoType as VideoURLType)
     if (result?.code === ResponseCode.SUCCESS) {
+      // 拿到了就放
       url.value = result.data
     } else {
       ElMessage.error(result?.msg || '获取视频播放地址失败~')
@@ -28,7 +31,6 @@ watch(() => store.currentPlayingMovie, async (video) => {
     ElMessage.error('获取视频播放地址失败~')
     console.error(err)
   }
-  console.log(url.value)
 }, {
   immediate: true
 })

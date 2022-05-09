@@ -24,9 +24,11 @@ import { CaretRight, ArrowDownBold } from '@element-plus/icons-vue'
 import { useMovieStore } from 'store/index'
 import { useRouter } from 'vue-router'
 import { RouteName } from '@/router'
-
+// 电影仓库
 const movieStore = useMovieStore()
+// 获取使用路由的工具
 const router = useRouter()
+// 设置这个组件的属性
 const props = withDefaults(
   defineProps<{
     videoInfo: MovieInfo
@@ -36,14 +38,16 @@ const props = withDefaults(
     actived: false
   }
 )
+// 定义这个组件能触发什么事件 props和emit都可以参考vue3官网
 const emits = defineEmits<{(e: 'click'): void }>()
-
+// 点击事件处理
 function clickHandle () {
   if (props.actived) {
     return
   }
   emits('click')
 }
+// computed计算属性，就是传的函数里，如果用到的东西有会变化，会重新计算
 const borderColor = computed(() => (props.actived ? 'white' : '#5e5d5b'))
 
 // 打开video card

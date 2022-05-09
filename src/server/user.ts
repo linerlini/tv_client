@@ -6,31 +6,23 @@ export type LoginResponse = {
   collections: MovieInfo[]
 }
 export async function login (account: string, password: string) {
-  try {
-    const result = await server.post<ResponseData<LoginResponse>>('/user/login', {
-      account,
-      password
-    })
-    return result.data
-  } catch (err) {
-    return null
-  }
+  const result = await server.post<ResponseData<LoginResponse>>('/user/login', {
+    account,
+    password
+  })
+  return result.data
 }
 export async function register (
   account: string,
   password: string,
   userName: string
 ) {
-  try {
-    const result = await server.post<ResponseData<User>>('/user/register', {
-      account,
-      password,
-      userName
-    })
-    return result.data
-  } catch (err) {
-    return null
-  }
+  const result = await server.post<ResponseData<User>>('/user/register', {
+    account,
+    password,
+    userName
+  })
+  return result.data
 }
 export async function requestAutoLogign () {
   const result = await server.get<ResponseData<User>>('/user/auto')

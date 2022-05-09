@@ -1,5 +1,6 @@
 <template>
   <header :class="{ scroll: hasScrolled }">
+    <!--主标题-->
     <div class="header-base">
       <div class="logo">MOVIE</div>
       <nav class="nav">
@@ -42,13 +43,12 @@
                 shape="square"
                 :size="32"
               >{{userStore.userName}}</el-avatar>
-              <!-- :icon="UserFilled" -->
-              <!-- src="https://occ-0-325-395.1.nflxso.net/dnm/api/v6/K6hjPJd6cR6FpVELC5Pd6ovHRSk/AAAABVjF0CFvQr_y2JOz996XrgEvRuIfVORj9jcN0LkwB1wn4Alo4xpnRw4F6pgdAFyrkI5KGX52WzGFYbzCtvw5FmE.png?r=60c" -->
             </template>
           </el-popover>
         </div>
       </div>
     </div>
+    <!--fu标题-->
     <div
       v-if="isShowSubTItle"
       class="header-subtitle"

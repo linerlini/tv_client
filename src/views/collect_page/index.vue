@@ -1,8 +1,6 @@
 <template>
   <div
     class="search-wrapper"
-    v-loading="isLoadding"
-    element-loading-text="Loading..."
   >
     <div class="list-wrapper" v-if="movieStore.collectMovie">
       <div class="list-title">我的收藏</div>
@@ -17,16 +15,10 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
 import { useMovieStore } from '@/store'
-import { searchVideo } from 'server/video'
-import { MovieInfo } from '@/types'
-import { ResponseCode } from '@/config/constants'
-import { ElMessage } from 'element-plus'
 import 'element-plus/theme-chalk/el-message.css'
-import { debounce } from 'utils/index'
 import Video from 'components/video_item/index.vue'
 
 const movieStore = useMovieStore()
-const isLoadding = ref(false)
 </script>
 <style lang="scss" scoped>
 .search-wrapper {

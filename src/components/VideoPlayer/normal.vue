@@ -55,6 +55,7 @@ function initPlayer () {
     cssFullscreen: true
   })
 }
+// 视图渲染完成后执行里面的函数
 onMounted(() => {
   const { offsetWidth, offsetHeight } = playerNode.value!
   videoSize.width = offsetWidth

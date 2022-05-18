@@ -55,7 +55,6 @@ async function initData () {
     const recommendP = getRecommendVideos()
     const newP = getNewVideos(newVideoOffset.value)
     const result = await Promise.all([hotP, recommendP, newP])
-    // todo 代码优化
     handleData(result[0]!, 'hot')
     handleData(result[1]!, 'recommend')
     handleData(result[2]!, 'newVideo')

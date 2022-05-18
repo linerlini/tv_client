@@ -73,7 +73,7 @@ async function activeChangeHandle (index: number) {
       // 获取失败就出提示信息
       ElMessage.error(result?.msg)
     } else {
-      // 获取成功就把视频地址存起来，然后切换这个视频播放
+      // 获取成功就把视频地址存起来并进行视频播放
       video.videoUrl = result?.data
       activedIndex.value = index
     }
@@ -99,10 +99,3 @@ async function activeChangeHandle (index: number) {
   }
 }
 </style>
-/*
-  1. 首页视频是怎么做的？
-  进入首页，首页还没有开始渲染的时候，先通过axios这个库向服务端的/video/hot发请求，去拿热门视频的信息，同时渲染加载页面，拿到数据后，数据是否有效，无效就渲染空数据页面，有效的话就正常渲染。
-  对于视频背景，用到了开源的西瓜播放器这个库，通过设置这个组件的一些属性，最重要的就是传递视频播放地址。置于最底层就是用css的绝对定位，利用z-index层级设置低于其他组件。
-  2. 首页视频列表怎么展示的
-  拿到数据后，利用vue的v-for这个能力，进行遍历这个视频数组，把视频信息插入到每一个div里面，用css控制div的样式，利用到flex布局，然后监听他们的点击事件，点击到不同的视频，就更换播放器组件里面视频的播放地址。
-*/

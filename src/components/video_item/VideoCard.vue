@@ -64,6 +64,7 @@ const props = withDefaults(
 )
 
 const hasCollected = ref(false)
+// 是否正在处理 收藏
 const handling = ref(false)
 watch(() => props.video, (value) => {
   if (value && (movieStore.collectMovie as MovieInfo[]).find((item) => item.uuid === value.uuid)) {
@@ -118,8 +119,10 @@ async function collectMovies () {
 async function playMovie () {
   const { video } = props
   if (!video.videoType) {
+    // 播放电影
     openPlayerPage(video.videoUrl!)
   } else {
+    // 播放视频
     movieStore.currentPlayingMovie = video
     router.push({ name: RouteName.PLAYER })
   }

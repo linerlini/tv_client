@@ -61,7 +61,6 @@ import { ElMessage } from 'element-plus'
 import 'element-plus/theme-chalk/el-message.css'
 import { useRouter } from 'vue-router'
 import { RouteName } from '@/router'
-// type interface都直接忽视，ts语法
 type FormInstance = InstanceType<typeof ElForm>
 // 获取用户仓库
 const userStore = useUserStore()
@@ -75,7 +74,7 @@ const router = useRouter()
 const LOGIN_BOX_HEIGHT = '450px'
 // 注册盒子高度
 const SIGN_BOX_HEIGHT = '600px'
-// 盒子类型有登录和注册两种
+// 登录盒子和注册盒子
 const enum BoxType {
   LOGIN,
   REGISTER
@@ -153,7 +152,7 @@ const registerFormRule = {
     {
       required: true,
       trigger: 'blur',
-      // 注册的时候不是要输两道密码迈，这个就是看第二次输的和第一次对不对
+      // 验证确认密码
       validator (rule: any, value: any, callback: any) {
         if (value !== registerFormData.password) {
           callback(new Error("Two inputs don't match!"))
@@ -221,20 +220,19 @@ async function submit () {
   // 获取表单的校验结果 成功还是失败
   const checkResult = await checkFormData(boxUI.boxType)
   if (!checkResult) {
+    submiting.value = false
     return
   }
   // 获取用户数据
   const data = await getUser(boxUI.boxType)
   if (data) {
     // 登录或者注册成功
-    // collections是收藏
     const { userInfo, collections } = data as LoginResponse
     userStore.$state = {
       ...userInfo,
       isLogin: true
     }
     movieStore.collectMovie = collections
-    // 上面一坨就是把用户信息 收藏信息都存起来
     // 跳转首页
     nextTick(() => {
       router.push({

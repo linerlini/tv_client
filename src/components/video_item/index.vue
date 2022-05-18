@@ -18,6 +18,7 @@ const props = withDefaults(
 )
 function openVideoCard () {
   movieStore.bouncedFilmInformation = props.video
+  // 设置视频卡片可见
   movieStore.movieDialogVisible = true
 }
 </script>

@@ -2,6 +2,7 @@
   <div class="home">
     <Header></Header>
     <RouterView></RouterView>
+    <!--视频卡片在这里 el-dialog是一个弹窗 弹窗的内容就是一个视频卡片-->
     <el-dialog
       v-model="movieStore.movieDialogVisible"
       custom-class="video-card"

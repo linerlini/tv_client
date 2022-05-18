@@ -67,7 +67,6 @@ function handleAxiosError (error: AxiosError) {
       }
     }
   }
-  // 请求被取消或者发送请求时异常，对应上面的 2 & 3
   return {
     data: {
       code: ResponseCode.NETWORK_ERROR,

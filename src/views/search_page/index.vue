@@ -34,7 +34,7 @@ import { debounce } from 'utils/index'
 import Video from 'components/video_item/index.vue'
 
 const movieStore = useMovieStore()
-// debounce防抖，阔以百度下前端防抖，这个函数就是搜素功能
+// 防抖
 const searchVideos = debounce(async (keywords: string) => {
   // 搜素的时候，把加载状态拿出来
   isLoadding.value = true
@@ -52,7 +52,7 @@ const searchVideos = debounce(async (keywords: string) => {
   // 结束加载状态
   isLoadding.value = false
 }, 200)
-// 监听搜索关键词的变化。变了就搜索
+// 监听搜索关键词的变化
 movieStore.$subscribe((mutation: any, state: any) => {
   const { searchKeywords } = state
   searchVideos(searchKeywords)
@@ -83,7 +83,6 @@ const videos = ref<MovieInfo[]>([])
       margin-bottom: 78px;
     }
   }
-  // todo 样式重复
   :deep(.el-loading-mask) {
     background: #141414;
     color: #e50914;

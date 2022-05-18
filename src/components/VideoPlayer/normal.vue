@@ -33,6 +33,7 @@ const props = withDefaults(
   }
 )
 const url = toRef(props, 'url')
+// 存储播放器
 const player = ref<Player>()
 const playerNode = ref<HTMLElement>()
 const videoSize = reactive({
@@ -44,7 +45,8 @@ function initPlayer () {
     player.value.src = url.value!
     return
   }
-  player.value = player.value = new Player({
+
+  player.value = new Player({
     url: props.url!,
     autoplay: props.autoplay,
     playbackRate: props.needPlayRate ? props.playbackRate : [],

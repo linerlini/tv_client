@@ -1,5 +1,5 @@
 import { createApp } from 'vue'
-// 捋平了各个浏览器之间的样式差异
+// 捋平各个浏览器之间的样式差异
 import 'normalize.css'
 // 页面入口
 import App from './App.vue'
@@ -11,4 +11,4 @@ import { createPinia } from 'pinia'
 
 createApp(App).use(createPinia()).use(router).mount('#app')
 
-// main.ts是项目入口
+// main.ts（目入口）
